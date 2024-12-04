@@ -28,7 +28,8 @@
             android:gravity="center"
             android:hint="Enter Number"
             android:inputType="numberSigned|numberDecimal"
-            android:textColorHint="#FF9800" />
+            android:textColorHint="#FF9800"
+            android:textSize="34sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -56,7 +57,8 @@
             android:gravity="center"
             android:hint="Enter Number"
             android:inputType="numberSigned|numberDecimal"
-            android:textColorHint="#FF9800" />
+            android:textColorHint="#FF9800"
+            android:textSize="34sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -82,7 +84,7 @@
             android:layout_weight="2"
             android:gravity="center"
             android:text="TextView"
-            android:textSize="24sp" />
+            android:textSize="34sp" />
 
         <Space
             android:layout_width="match_parent"
