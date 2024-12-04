@@ -12,13 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import java.text.DecimalFormat;
+
 
 public class MainActivity extends AppCompatActivity {
 
     EditText eD1,eD2;
     TextView tV1;
 
-    //Double num1,num2;
+    //DecimalFormat scientificFormat;//for printing the format
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public String give_format(double num)
+    {
+        String format = Double.toString(num);
+        if(format.replace(".", "").length() > 10)
+        {
+            DecimalFormat scientificFormat = new DecimalFormat("0.#########E0");
+            format = scientificFormat.format(num);
+            return format;
+        }
+        else
+        {
+            return format;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu (Menu menu)
     {
@@ -80,24 +97,24 @@ public class MainActivity extends AppCompatActivity {
             if(id == R.id.menu_plus)
             {
                 ans = num_eD1 + num_eD2;
-                tV1.setText(""+ ans);
+                tV1.setText(""+ give_format(ans));
             }
             else if(id == R.id.menu_minus)
             {
                 ans = num_eD1 - num_eD2;
-                tV1.setText(""+ ans);
+                tV1.setText(""+ give_format(ans));
             }
             else if(id == R.id.menu_mul)
             {
                 ans = num_eD1 * num_eD2;
-                tV1.setText(""+ ans);
+                tV1.setText(""+ give_format(ans));
             }
             else if(id == R.id.menu_div)
             {
                 if(check_zero(num_eD2))
                 {
                     ans = num_eD1 / num_eD2;
-                    tV1.setText(""+ ans);
+                    tV1.setText(""+ give_format(ans));
                 }
                 else
                 {
@@ -113,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
+            tV1.setText("Error");
             Toast.makeText(this,"Error: illegal input",Toast.LENGTH_LONG).show();
         }
 
